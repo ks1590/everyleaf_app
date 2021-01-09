@@ -46,7 +46,7 @@ $ heroku buildpacks:add --index 1 heroku/nodejs
 6. Herokuにデプロイをする。  
 $ git push heroku master
 
-7. データベースの移行。  
+7. データベースの作成。  
 $ heroku run rails db:migrate
 
 8. アプリケーションにアクセスする。  
