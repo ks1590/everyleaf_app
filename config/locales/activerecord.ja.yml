@@ -10,3 +10,10 @@ ja:
         deadline: 終了期限
         status: ステータス
         priority: 優先順位
+  helpers:
+    select:
+      prompt: 選択してください
+    submit:
+      create: "%{model}を登録する"
+      submit: "%{model}を保存する"
+      update: "%{model}を更新する"

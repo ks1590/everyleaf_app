@@ -1,17 +1,17 @@
 <h1>タスク詳細</h1>
 <div>
-  <p>タスク名 : <br><%= @task.title %></p>
+  <p><%= t('view.title') %> :<br><%= @task.title %></p>
 </div>
 <div>
-  <p>タスク内容 : <br><%= @task.detail %></p>
+  <p><%= t('view.detail') %> :<br><%= @task.detail %></p>
 </div>
 <div>
-  <p>期限 : <br><%= @task.deadline %></p>
+  <p><%= t('view.deadline') %> :<br><%= @task.deadline %></p>
 </div>
 <div>
-  <p>優先度 : <br><%= @task.priority %></p>
+  <p><%= t('view.priority') %> :<br><%= @task.priority %></p>
 </div>
 <div>
-  <p>進捗状況 : <br><%= @task.status %></p>
+  <p><%= t('view.status') %> :<br><%= @task.status %></p>
 </div>
-<%= link_to '編集', edit_task_path%> | <%= link_to '戻る', tasks_path %>
+<%= link_to t('view.edit'), edit_task_path%> | <%= link_to t('view.back'), tasks_path %>
