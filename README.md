@@ -1,24 +1,25 @@
-# README
+## User Model
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| カラム名 | データ型 |
+|----|----|
+| name | string |
+| email | string |
+| password_dijest | string |
 
-Things you may want to cover:
 
-* Ruby version
+## Task Model
 
-* System dependencies
+| カラム名 | データ型 |
+|----|----|
+| title | string |
+| detail | text |
+| deadline | datetime |
+| priority | integer |
+| status | string |
 
-* Configuration
 
-* Database creation
+## Label Model
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| カラム名 | データ型 |
+|----|----|
+| name | string |
