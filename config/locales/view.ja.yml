@@ -2,7 +2,7 @@
 ja:
   view:
     title: タイトル
-    detail: 詳細内容
+    detail: タスクの内容
     deadline: 終了期限
     priority: 優先順位
     status: ステータス
