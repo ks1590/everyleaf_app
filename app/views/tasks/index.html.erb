@@ -8,7 +8,9 @@
       <th><%= t('view.deadline') %><%= link_to tasks_path(sort_expired: "true") do %>
         <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 16px;margin-left: 10px;"></span>
       <% end %></th>
-      <th><%= t('view.priority') %></th>
+      <th><%= t('view.priority') %><%= link_to tasks_path(sort_priority: "true") do %>
+        <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 16px;margin-left: 10px;"></span>
+      <% end %></th>
       <th><%= t('view.status') %></th>
     </tr>
   </thead>

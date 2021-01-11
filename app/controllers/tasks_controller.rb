@@ -5,6 +5,8 @@ class TasksController < ApplicationController
     @tasks = Task.all
     if params[:sort_expired]
       @tasks = @tasks.deadline
+    elsif params[:sort_priority]
+      @tasks = @tasks.priority
     else
       @tasks = @tasks.default
     end
