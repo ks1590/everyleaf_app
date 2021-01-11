@@ -9,7 +9,7 @@
         <p><%= t('view.detail') %> :<br><%= @task.detail %></p>
       </div>
       <div class="col-xs-8 col-xs-offset-2">
-        <p><%= t('view.deadline') %> :<br><%= @task.deadline %></p>
+        <p><%= t('view.deadline') %> :<br><%= l @task.deadline, format: :short%></p>
       </div>
       <div class="col-xs-8 col-xs-offset-2">
         <p><%= t('view.priority') %> :<br><%= @task.priority %></p>
