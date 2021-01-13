@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :show, :destroy]
   
+  PREVIEW = 5
+
   def index
     @get_params = get_task_params
     @tasks = Task.search(@get_params)
@@ -9,7 +11,7 @@ class TasksController < ApplicationController
     elsif params[:sort_priority]
       @tasks = @tasks.priority
     else
-      @tasks = @tasks.default
+      @tasks = @tasks.default.page(params[:page]).per(PREVIEW)
     end
   end
 

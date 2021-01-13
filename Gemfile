@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bootstrap-select-rails'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 
