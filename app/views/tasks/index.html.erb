@@ -28,11 +28,11 @@
       <tr>
         <th><%= t('view.title') %></th>
         <th><%= t('view.detail') %></th>
-        <th><%= t('view.deadline') %><%= link_to tasks_path(sort_expired: "true") do %>
-          <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 16px;margin-left: 10px;"></span>
+        <th><%= t('view.deadline') + "　"%><%= link_to tasks_path(sort_expired: "true"), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 15px;"></span>
         <% end %></th>
-        <th><%= t('view.priority') %><%= link_to tasks_path(sort_priority: "true") do %>
-          <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 16px;margin-left: 10px;"></span>
+        <th><%= t('view.priority') + "　" %><%= link_to tasks_path(sort_priority: "true"),  class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 15px;"></span>
         <% end %></th>
         <th><%= t('view.status') %></th>
       </tr>
