@@ -4,8 +4,13 @@ class Task < ApplicationRecord
   validates :deadline, presence: true
   validates :priority, presence: true
   validates :status, presence: true
+  validate :check_past_date
 
   enum priority: { 低: 0, 中: 1, 高: 2 }
+
+  def check_past_date
+    errors.add(:deadline, 'に過去日が入力されています。') if deadline < Date.today - 1
+  end
 
   scope :search, -> (get_params) { 
     return if get_params.blank?

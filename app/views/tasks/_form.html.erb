@@ -2,16 +2,7 @@
   <div class= "row">
   <div class="col-xs-8 col-xs-offset-2 form">
     <%= form_with(model: @task, local:true) do |f| %>
-    <div class="form-group col-xs-8  col-xs-offset-2">
-      <% if @task.errors.any? %>
-        <ul>
-          <% @task.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      </div>
-
+      <%= render "layouts/error_messages" %>
       <div class="form-group col-xs-8 col-xs-offset-2">
         <%= f.label t('view.title') %><br>
         <%= f.text_field :title, class: "form-control" %>
