@@ -13,7 +13,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in "task_title", with: 'テスト1'
         fill_in "task_detail", with: 'タスク詳細'
-        fill_in "task_deadline", with: '002021/01/10'
+        fill_in "task_deadline", with: '002021/02/10'
         select "中", from: 'task_priority'
         select "完了", from: 'task_status'
         click_on "登録"
