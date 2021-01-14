@@ -7,9 +7,9 @@ class TasksController < ApplicationController
     @get_params = get_task_params
     @tasks = Task.search(@get_params)
     if params[:sort_expired]
-      @tasks = @tasks.deadline
+      @tasks = @tasks.deadline.page(params[:page]).per(PREVIEW)
     elsif params[:sort_priority]
-      @tasks = @tasks.priority
+      @tasks = @tasks.priority.page(params[:page]).per(PREVIEW)
     else
       @tasks = @tasks.default.page(params[:page]).per(PREVIEW)
     end
