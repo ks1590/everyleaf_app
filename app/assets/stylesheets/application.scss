@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-select
  */
+@import "bootstrap-sprockets";
+@import "bootstrap"; 
+@import "bootstrap-select";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}

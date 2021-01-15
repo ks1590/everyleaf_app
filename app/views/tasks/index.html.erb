@@ -1,11 +1,39 @@
-<button type="button"><%= link_to "新しいToDoリストを作成する", new_task_path %></button>
-  <table class="table table-striped">
+<div class="task-form">
+  <%= link_to new_task_path, class: "btn btn-success" do %>
+    <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>　新しいタスクを作成する
+  <% end %>
+</div>
+
+<a class="task-form btn btn-primary" data-toggle="collapse" href="#tasksearch" role="button" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>　タスク検索</a>
+<div class="collapse" id="tasksearch">
+  <%= form_with(scope: :search, url: tasks_path, method: :get, local: true) do |f| %>
+    <div class="form-inline task-form">
+      <div class="form-group">
+        <%= f.label t('view.title') %>：
+        <%= f.text_field :title, placeholder: "キーワード...", value: @get_params[:title], class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label t('view.status') %>：
+        <%= f.select(:status, options_for_select(I18n.t('status_option')),{include_blank: '未選択'}, {class: "selectpicker select-option "}) %>
+      </div>
+      <%= f.submit "検索", class: "btn btn-info" %>
+      <%= link_to "検索条件クリア", tasks_path, class: "btn btn-warning" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th><%= t('view.title') %></th>
         <th><%= t('view.detail') %></th>
-        <th><%= t('view.deadline') %></th>
-        <th><%= t('view.priority') %></th>
+        <th><%= t('view.deadline') + "　"%><%= link_to tasks_path(sort_expired: "true"), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 15px;"></span>
+        <% end %></th>
+        <th><%= t('view.priority') + "　" %><%= link_to tasks_path(sort_priority: "true"),  class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" style="font-size: 15px;"></span>
+        <% end %></th>
         <th><%= t('view.status') %></th>
       </tr>
     </thead>
@@ -13,14 +41,16 @@
       <% @tasks.each do |task| %>
         <tr>
           <td><%= task.title %></td>
-          <td><%= task.detail %></td>
-          <td><%= task.deadline %></td>
+          <td><%= task.detail.truncate(25) %><br><br><%= link_to t('view.show'), task_path(task.id), class: "btn btn-info"%>
+          </td>
+          <td><%= l task.deadline, format: :short %></td>
           <td><%= task.priority %></td>
-          <td><%= task.status %></td>
-          <td><button type="button"><%= link_to t('view.show'), task_path(task.id) %></button></td>
-          <td><button type="button"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
-          <td><button type="button"><%= link_to t('view.destroy'), task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか?' } %></button></td>
+          <td><%= task.status %></td>        
+          <td><%= link_to t('view.edit'), edit_task_path(task.id), class: "btn btn-primary" %></td>
+          <td><%= link_to t('view.destroy'), task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか?' }, class: "btn btn-warning" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+<%= paginate @tasks, class: "pagination"%>

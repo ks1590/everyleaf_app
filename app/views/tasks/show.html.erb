@@ -1,17 +1,25 @@
 <h1>タスク詳細</h1>
-<div>
-  <p><%= t('view.title') %> :<br><%= @task.title %></p>
+<div class="container">
+  <div class= "row">
+  <div class=" col-xs-8 col-xs-offset-2 form">
+      <div class="col-xs-8 col-xs-offset-2">
+        <p><%= t('view.title') %> :<br><%= @task.title %></p>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2">
+        <p><%= t('view.detail') %> :<br><%= @task.detail %></p>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2">
+        <p><%= t('view.deadline') %> :<br><%= l @task.deadline, format: :short%></p>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2">
+        <p><%= t('view.priority') %> :<br><%= @task.priority %></p>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2">
+        <p><%= t('view.status') %> :<br><%= @task.status %></p>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2">
+        <%= link_to t('view.edit'), edit_task_path, class: "btn btn-success" %> <%= link_to t('view.back'), tasks_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-  <p><%= t('view.detail') %> :<br><%= @task.detail %></p>
-</div>
-<div>
-  <p><%= t('view.deadline') %> :<br><%= @task.deadline %></p>
-</div>
-<div>
-  <p><%= t('view.priority') %> :<br><%= @task.priority %></p>
-</div>
-<div>
-  <p><%= t('view.status') %> :<br><%= @task.status %></p>
-</div>
-<%= link_to t('view.edit'), edit_task_path%> | <%= link_to t('view.back'), tasks_path %>

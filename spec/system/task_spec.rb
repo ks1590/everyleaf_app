@@ -13,7 +13,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in "task_title", with: 'テスト1'
         fill_in "task_detail", with: 'タスク詳細'
-        fill_in "task_deadline", with: '002021/01/10'
+        fill_in "task_deadline", with: '002021/02/10'
         select "中", from: 'task_priority'
         select "完了", from: 'task_status'
         click_on "登録"
@@ -32,6 +32,39 @@ RSpec.describe 'タスク管理機能', type: :system do
     context 'タスクが作成日時の降順に並んでいる場合' do
       it '新しいタスクが一番上に表示される' do
         expect(all('tbody tr')[0]).to have_content 'テスト3'
+      end
+    end
+  end
+
+  describe '検索機能' do
+    context 'タイトルであいまい検索をした場合' do
+      it "検索キーワードを含むタスクで絞り込まれる" do
+        visit tasks_path
+        fill_in "search[title]",	with: "テス" 
+        click_on "検索"
+        expect(page).to have_content 'テスト'
+      end
+    end
+    context 'ステータス検索をした場合' do
+      it "ステータスに完全一致するタスクが絞り込まれる" do
+        visit tasks_path
+        select "着手中", from: "search[status]"
+        click_on "検索"
+        expect(page).to (have_selector 'td', text: '着手中')
+        expect(page).not_to (have_selector 'td', text: '完了')
+        expect(page).not_to (have_selector 'td', text: '未着手')
+      end
+    end
+    context 'タイトルのあいまい検索とステータス検索をした場合' do
+      it "検索キーワードをタイトルに含み、かつステータスに完全一致するタスク絞り込まれる" do
+        visit tasks_path
+        fill_in "search[title]",	with: "テス"
+        select "着手中", from: "search[status]"
+        click_on "検索"
+        expect(page).to have_content 'テスト'
+        expect(page).to (have_selector 'td', text: '着手中')
+        expect(page).not_to (have_selector 'td', text: '完了')
+        expect(page).not_to (have_selector 'td', text: '未着手')
       end
     end
   end
