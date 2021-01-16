@@ -1,0 +1,27 @@
+<div class="contentBx">
+  <div class="formBx">
+    <h2>アカウント新規登録</h2>
+    <%= render "layouts/user_error_messages" %>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="inputBx">
+        <span><%= f.label :アカウント名　%></span>
+        <%= f.text_field :name %>
+      </div>
+      <div class="inputBx">
+        <span><%= f.label :メールアドレス　%></span>
+        <%= f.email_field :email %>
+      </div>
+      <div class="inputBx">
+        <span><%= f.label :パスワード　%></span>
+        <%= f.password_field :password %>
+      </div>
+      <div class="inputBx">
+        <span><%= f.label :パスワード（確認用）%></span>
+        <%= f.password_field :password_confirmation %>
+      </div><br>
+      <div class="inputBx">
+        <%= f.submit "新規作成", disable_with: '新規作成...' %>
+      </div>        
+    <% end %>
+  </div>
+</div>
