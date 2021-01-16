@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:show]
+  
   def new
     @user = User.new
   end
@@ -9,11 +11,11 @@ class UsersController < ApplicationController
       redirect_to  user_path(@user.id)
     else
       render :new
-    end    
+    end
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   private
