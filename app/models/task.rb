@@ -6,6 +6,8 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validate :check_past_date
 
+  belongs_to :user
+
   enum priority: { 低: 0, 中: 1, 高: 2 }
 
   def check_past_date

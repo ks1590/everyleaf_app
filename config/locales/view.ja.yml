@@ -1,6 +1,7 @@
 ---
 ja:
   view:
+    user_name: ユーザー名
     title: タイトル
     detail: タスクの内容
     deadline: 終了期限
