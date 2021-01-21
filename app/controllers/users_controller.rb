@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show]
+
+  PEREVIEW = 10
   
   def new
     @user = User.new
@@ -17,6 +19,8 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user
+    @tasks = @user.tasks&.page(params[:page]).per(PEREVIEW)
+    redirect_to tasks_path if @user.id != params[:id].to_i
   end
 
   private

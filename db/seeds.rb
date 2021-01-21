@@ -1,5 +1,13 @@
 password = "123456"
 
+User.create!(
+  name: "admin_user",
+  email: "test_admin@example.com",
+  password: password,
+  password_confirmation: password,
+  admin: true
+)
+
 5.times do |n|
   name = Faker::JapaneseMedia::Doraemon.character
   email = "test_user#{ n + 1 }@example.com"
@@ -8,7 +16,8 @@ password = "123456"
     name: name,
     email: email,
     password: password,
-    password_confirmation: password
+    password_confirmation: password,
+    admin: false
   )
 end
 
