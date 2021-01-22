@@ -1,1 +1,28 @@
 <h2>ユーザーリスト</h2>
+<div class="task-form">
+  <%= link_to new_admin_user_path, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>　新しいユーザーを登録する
+  <% end %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr class="heading">
+      <th>ID</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>タスク数</th>
+      <th>ユーザー管理権限</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>        
+        <th><%= user.id %></th>
+        <td><%= link_to user.name, admin_user_path(user.id) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.tasks.count %></td>
+        <td><%= user.admin? ? "有": "無" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

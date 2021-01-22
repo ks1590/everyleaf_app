@@ -1,7 +1,6 @@
 <div class="contentBx">
   <div class="formBx">
     <h2>アカウント新規登録</h2>
-    <%= render "layouts/user_error_messages" %>
     <%= form_with(model: @user, local: true) do |f| %>
       <div class="inputBx">
         <span><%= f.label :アカウント名　%></span>
