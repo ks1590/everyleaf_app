@@ -14,7 +14,7 @@ RSpec.describe 'ユーザー登録、セッション機能のテスト', type: :
         fill_in 'user_email', with:'sample@example.com'
         fill_in 'user_password', with:'123456'
         fill_in 'user_password_confirmation', with:'123456'
-        click_on '新規作成'
+        click_on '新規登録'
         expect(page).to have_content 'sample_user'
         expect(page).not_to have_content 'test_user1'
         expect(page).to have_content 'sample@example.com'
@@ -121,12 +121,12 @@ RSpec.describe 'ユーザー登録、セッション機能のテスト', type: :
         fill_in 'user_password', with:'123456'
         fill_in 'user_password_confirmation', with:'123456'
         uncheck 'user_admin'
-        click_on '新規作成'
+        click_on '新規登録'
         expect(page).to have_content 'admin_test1'
         expect(page).to have_content 'admin_test@example.com'
         expect(page).not_to have_content 'test0'
         expect(page).to have_content '登録しました'
-        expect(page).to have_content 'ユーザー管理権限'
+        expect(page).to have_content '管理者権限'
       end
     end
 
@@ -148,7 +148,7 @@ RSpec.describe 'ユーザー登録、セッション機能のテスト', type: :
         fill_in 'user_name', with:'edit_test'
         fill_in 'user_email', with:'edit_success@example.com'
         check 'user_admin'
-        click_on '登録'
+        click_on 'アカウントを更新する'
         expect(current_path).to eq admin_user_path(@user)
         expect(current_path).not_to eq user_path(@user)
         expect(page).to have_content 'edit_testさんのアカウント情報です'
