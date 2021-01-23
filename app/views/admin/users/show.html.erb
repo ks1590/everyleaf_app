@@ -1,8 +1,6 @@
-<h2><%= @user.name%>さんページ</h2>
-<br>
 <div class="task-form">
   <%= link_to admin_users_path, class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-list g-links" aria-hidden="true"></span> ユーザーリスト一覧に戻る
+    <span class="glyphicon glyphicon-list g-links" aria-hidden="true"></span>　ユーザーリスト一覧に戻る
   <% end %>
   <%= link_to edit_admin_user_path, class: "btn btn-info" do %>
     <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>　ユーザーアカウント編集
@@ -11,26 +9,38 @@
     <span class="glyphicon glyphicon-trash g-links" aria-hidden="true"></span>　ユーザーアカウント削除
   <% end %>
 </div>
-      
-<div>ID:</div>
-<div><%= @user.id %></div>
-<div>ユーザー名</div>
-<div><%= @user.name%></div>
-<div>メールアドレス</div>
-<div><%= @user.email %></div>
-<div>タスク数</div>
-<div><%= @user.tasks.count %></div>
-<div>ユーザー管理権限</div>
-<div><%= @user.admin? ? "有り" : "無し" %></div>        
-<br>
+
+<h3><%= @user.name%>さんのアカウント情報です</h3>
+<div class="form-horizontal">
+  <div class="form-group form-group-lg">
+    <div class="col-sm-2 control-label">ID :</div>
+    <div class="col-sm-10 form-control-static"><%= @user.id %></div> 
+  </div>
+  <div class="form-group form-group-lg">
+    <div class="col-sm-2 control-label">ユーザー名 :</div>
+    <div class="col-sm-10 form-control-static"><%= @user.name %></div>
+  </div>
+  <div class="form-group form-group-lg">
+    <div class="col-sm-2 control-label">メールアドレス :</div>
+    <div class="col-sm-10 form-control-static"><%= @user.email %></div>
+  </div>
+  <div class="form-group form-group-lg">
+    <div class="col-sm-2 control-label">タスク数 :</div>
+    <div class="col-sm-10 form-control-static"><%= @user.tasks.count %></div>
+  </div>
+  <div class="form-group form-group-lg">
+    <div class="col-sm-2 control-label">ユーザー管理権限 :</div>
+    <div class="col-sm-10 form-control-static"><%= @user.admin? ? "有" : "無" %></div>
+  </div>
+</div>
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>タスク名</th>
-      <th>内容</th>
-      <th>終了期限</th>
-      <th>ステータス</th>
-      <th>優先順位</th>
+      <th><%= t('view.title') %></th>
+      <th><%= t('view.detail') %></th>
+      <th><%= t('view.deadline') %></th>
+      <th><%= t('view.status') %></th>
+      <th><%= t('view.priority') %></th>
     </tr>
   </thead>
   <tbody>
@@ -38,7 +48,7 @@
       <tr>
         <td><%= task.title %></td>
         <td><%= task.detail.truncate(20) %></td>
-        <td><%= task.deadline %></td>
+        <td><%= l task.deadline, format: :short %></td>
         <td><%= task.status %></td>
         <td><%= task.priority %></td>
       </tr>

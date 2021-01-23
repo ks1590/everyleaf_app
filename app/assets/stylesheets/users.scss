@@ -12,10 +12,6 @@
   align-items: center;
 }
 
-// .contentBx .formBx {
-//   width: 25%;
-// }
-
 .contentBx .formBx h2 {
   color: #607d8b;
   font-weight: 600;
@@ -26,7 +22,8 @@
   letter-spacing: 1px;
 }
 
-.contentBx .formBx .inputBx {
+.contentBx .formBx .inputBx,
+.contentBx .formBx .checkbox-inline {
   margin-bottom: 20px;
 }
 
@@ -72,4 +69,10 @@
   .contentBx .formBx {
     width: 35%;
   }
+}
+
+// admin_user
+.form-group.form-group-lg {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
