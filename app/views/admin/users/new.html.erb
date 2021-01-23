@@ -3,27 +3,27 @@
     <h2>管理者用アカウント新規登録</h2>
     <%= form_with(model: [:admin,@user], local: true) do |f| %>
       <div class="inputBx">
-        <span class="label"><%= f.label :アカウント名　%></span>
+        <span class="label"><%= f.label t('view.user_name') %></span>
         <%= f.text_field :name %>
       </div>
       <div class="inputBx">
-        <span class="label"><%= f.label :メールアドレス　%></span>
+        <span class="label"><%= f.label t('view.email') %></span>
         <%= f.email_field :email %>
       </div>
       <div class="inputBx">
-        <span class="label"><%= f.label :パスワード（半角英数字６文字以上）　%></span>
+        <span class="label"><%= f.label t('view.password') %></span></span>
         <%= f.password_field :password %>
       </div>
       <div class="inputBx">
-        <span class="label"><%= f.label :パスワード（確認用）%></span>
+        <span class="label"><%= f.label t('view.password_confirmation') %></span></span>
         <%= f.password_field :password_confirmation %>
       </div>
         <div class="checkbox-inline">
-          <span class="label"><%= f.label :管理権限付与 %></span>
+          <span class="label"><%= f.label t('view.admin') %></span>
           <%= f.check_box :admin %>
         </div><br>
       <div class="inputBx">
-        <%= f.submit "新規作成", disable_with: '新規作成...' %>
+        <%= f.submit t('view.submit_new'), disable_with: '新規作成...' %>
       </div>        
     <% end %>
   </div>

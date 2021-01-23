@@ -1,12 +1,20 @@
 ---
 ja:
   view:
+    user_id: ID
     user_name: ユーザー名
+    email: メールアドレス
+    password: パスワード（半角英数字６文字以上）
+    password_confirmation: パスワード（確認用）
+    submit_new: 新規登録
+    log_in: ログイン
+    admin: 管理者権限
     title: タイトル
     detail: タスクの内容
     deadline: 終了期限
     priority: 優先順位
     status: ステータス
+    task_count: タスク数
     show: 詳細
     edit: 編集
     destroy: 削除

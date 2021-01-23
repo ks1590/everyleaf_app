@@ -3,20 +3,20 @@
   <div class= "row">
     <%= form_with(model: [:admin,@user], local: true) do |f| %>
       <div class="form-group col-xs-6 col-xs-offset-3">
-        <%= f.label :アカウント名 %><br>
+        <%= f.label t('view.user_name') %><br>
         <%= f.text_field :name, class:"form-control" %>
       </div>
       <div class="form-group col-xs-6 col-xs-offset-3">
-        <%= f.label :メールアドレス %><br>
+        <%= f.label t('view.email') %><br>
         <%= f.email_field :email, class:"form-control" %>
       </div>
       <div class="form-group col-xs-6 col-xs-offset-3">
-        <%= f.label :管理権限付与 %>
+        <%= f.label t('view.admin') %>
         <%= f.check_box :admin %>
       </div>
       <br>
       <div class="form-group col-xs-6 col-xs-offset-3">
-        <%= f.submit "登録", class:"btn btn-primary btn-block" %>
+        <%= f.submit class:"btn btn-primary btn-block" %>
       </div>
       <div class="form-group col-xs-6 col-xs-offset-3">
         <%= link_to "ユーザーリストに戻る", admin_users_path, class: "btn btn-default btn-block" %>

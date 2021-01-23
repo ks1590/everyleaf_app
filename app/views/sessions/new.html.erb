@@ -3,17 +3,17 @@
     <h2>メールアドレスでログイン</h2>
     <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
       <div class="inputBx">
-        <span><%= f.label :メールアドレス　%></span>
+        <span class="label"><%= f.label t('view.email') %></span>
         <%= f.email_field :email %>
       </div>
       <div class="inputBx">
-        <span><%= f.label :パスワード　%></span>
+        <span class="label"><%= f.label t('view.password') %></span>
         <%= f.password_field :password %>
       </div><br>
       <div class="inputBx">
         <%= f.submit "ログイン" %>
       </div>
     <% end %>      
-    <p>アカウントをお持ちではないですか？</p><%= link_to "新規登録する", new_user_path %>
+    <p>アカウントをお持ちではないですか？ <%= link_to t('view.submit_new'), new_user_path %></p>
   </div>
 </div>

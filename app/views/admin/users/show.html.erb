@@ -13,23 +13,23 @@
 <h3><%= @user.name%>さんのアカウント情報です</h3>
 <div class="form-horizontal">
   <div class="form-group form-group-lg">
-    <div class="col-sm-2 control-label">ID :</div>
+    <div class="col-sm-2 control-label"><%= t('view.user_id') %> :</div>
     <div class="col-sm-10 form-control-static"><%= @user.id %></div> 
   </div>
   <div class="form-group form-group-lg">
-    <div class="col-sm-2 control-label">ユーザー名 :</div>
+    <div class="col-sm-2 control-label"><%= t('view.user_name') %> :</div>
     <div class="col-sm-10 form-control-static"><%= @user.name %></div>
   </div>
   <div class="form-group form-group-lg">
-    <div class="col-sm-2 control-label">メールアドレス :</div>
+    <div class="col-sm-2 control-label"><%= t('view.email') %> :</div>
     <div class="col-sm-10 form-control-static"><%= @user.email %></div>
   </div>
   <div class="form-group form-group-lg">
-    <div class="col-sm-2 control-label">タスク数 :</div>
+    <div class="col-sm-2 control-label"><%= t('view.task_count') %> :</div>
     <div class="col-sm-10 form-control-static"><%= @user.tasks.count %></div>
   </div>
   <div class="form-group form-group-lg">
-    <div class="col-sm-2 control-label">ユーザー管理権限 :</div>
+    <div class="col-sm-2 control-label"><%= t('view.admin') %> :</div>
     <div class="col-sm-10 form-control-static"><%= @user.admin? ? "有" : "無" %></div>
   </div>
 </div>
