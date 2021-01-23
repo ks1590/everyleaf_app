@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   def update_one_admin_present
     if User.where(admin: true).size == 1 && self.admin == false
-      errors.add(:admin,"は、最低でも１人は必要です。")
+      errors.add(:admin,"は最低１人必要です")
       throw(:abort)
     end
   end

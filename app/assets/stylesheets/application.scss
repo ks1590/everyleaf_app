@@ -25,6 +25,10 @@ body {
   box-sizing: border-box;
 }
 
+h2 {
+  text-align: center;
+}
+
 .navbar {
   margin: 0;
 }
@@ -44,4 +48,8 @@ body {
 .pagination {
   display: flex;
   justify-content: center;
+}
+
+.help-block {
+  color: rgb(221, 79, 79);
 }
