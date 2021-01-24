@@ -17,8 +17,39 @@
 @import "bootstrap-sprockets";
 @import "bootstrap"; 
 @import "bootstrap-select";
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+}
+
+.navbar {
+  margin: 0;
+}
+
+.navbar-brand {
+  font-family: 'Cabin', sans-serif;
+  font-size: 27px;
+}
+
+.flash-message {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
 .pagination {
   display: flex;
   justify-content: center;
+}
+
+.help-block {
+  color: rgb(221, 79, 79);
 }

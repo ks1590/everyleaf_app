@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user
   before_action :set_task, only: [:edit, :update, :show, :destroy]
   
   PREVIEW = 5
@@ -21,9 +22,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
-      redirect_to tasks_path, notice: "タスクを登録しました。"
+      redirect_to tasks_path, success: "新しいタスクを登録しました"
     else
       render :new
     end
@@ -34,9 +35,9 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: "タスクを更新しました。"
+      redirect_to tasks_path, info: "タスク（#{@task.title}）を更新しました"
     else
-      flash[:danger] = "タスクの更新に失敗しました。"
+      flash[:danger] = "タスク（#{@task.title}）の更新に失敗しました"
       render :edit
     end
   end
@@ -46,7 +47,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_path, notice: "タスクを削除しました。"
+    redirect_to tasks_path, danger: "タスク（#{@task.title}）を削除しました"
   end
   
   private

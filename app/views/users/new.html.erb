@@ -1,0 +1,27 @@
+<div class="contentBx">
+  <div class="formBx">
+    <h2>アカウント新規登録</h2>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="inputBx">
+        <span class="label"><%= t('view.user_name') %></span>
+        <%= f.text_field :name %>
+      </div>
+      <div class="inputBx">
+        <span class="label"><%= f.label t('view.email') %></span>
+        <%= f.email_field :email %>
+      </div>
+      <div class="inputBx">
+        <span class="label"><%= f.label t('view.password') %></span></span>
+        <%= f.password_field :password %>
+      </div>
+      <div class="inputBx">
+        <span class="label"><%= f.label t('view.password_confirmation') %></span></span>
+        <%= f.password_field :password_confirmation %>
+      </div><br>
+      <div class="inputBx">
+        <%= f.submit t('view.submit_new'), disable_with: '新規作成...' %>
+      </div>        
+    <% end %>
+    アカウントをお持ちですか？　<%= link_to t('view.log_in'), new_session_path %>
+  </div>
+</div>

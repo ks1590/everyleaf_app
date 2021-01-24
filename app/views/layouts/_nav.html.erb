@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse">
+  <% if logged_in? %>
+    <div class="container-fluid container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">
+          <%= link_to 'TASK MANEGMENT', tasks_path, style:"color: #fff; text-decoration: none;" %>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">          
+          <li><%= link_to 'タスク一覧に戻る', tasks_path %></li>      
+          <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+          <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+        </ul>
+      </div>
+    </div>
+  <% else %>
+    <div class="navbar-brand">
+      <%= link_to 'TASK MANEGMENT', new_user_path, style:"color: #fff; text-decoration: none;" %>
+    </div>
+  <% end %>
+</nav>

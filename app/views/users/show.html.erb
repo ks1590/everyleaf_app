@@ -1,0 +1,41 @@
+<h3><%= @user.name %></h3>
+<p><%= @user.email %></p>
+<div class="task-form">
+  <% if current_user.admin? %>
+    <%= link_to admin_users_path, class: "btn btn-success" do %>
+      <span class="glyphicon glyphicon-user g-links" aria-hidden="true"></span>　管理者画面
+    <% end %>
+  <% end %>
+</div>
+<div class="task-form">
+  <%= link_to new_task_path, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>　新しいタスクを作成する
+  <% end %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t('view.title') %></th>
+      <th><%= t('view.detail') %></th>
+      <th><%= t('view.deadline') %></th>
+      <th><%= t('view.priority') %></th>
+      <th><%= t('view.status') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.detail.truncate(20) %></td>
+        <td><%= l task.deadline, format: :short %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.status %></td>      
+        <td><%= link_to t('view.edit'), edit_task_path(task.id), class: "btn btn-primary" %></td>
+        <td><%= link_to t('view.destroy'), task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか?' }, class: "btn btn-warning" %></td> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="paginate">
+  <%= paginate @tasks %>
+</div>

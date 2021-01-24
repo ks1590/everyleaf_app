@@ -19,11 +19,14 @@ gem 'bootstrap-select-rails'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
+gem 'bcrypt', '~> 3.1.7'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 group :development do

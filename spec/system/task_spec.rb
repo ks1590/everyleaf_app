@@ -1,19 +1,24 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
   before do
-    FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
-    FactoryBot.create(:third_task)
+    @user = FactoryBot.create(:user)
+    visit new_session_path
+    fill_in 'session_email', with:'test1@example.com'
+    fill_in 'session_password', with:'123456'
+    click_on 'ログイン'
+    FactoryBot.create(:task, user: @user)
+    FactoryBot.create(:second_task, user: @user)
+    FactoryBot.create(:third_task, user: @user)
     visit tasks_path
   end
 
   describe '新規作成機能' do
     context 'タスクを新規作成した場合' do
-      it '作成したタスクが表示される' do
+      it '作成したタスクが表示される' do        
         visit new_task_path
         fill_in "task_title", with: 'テスト1'
         fill_in "task_detail", with: 'タスク詳細'
-        fill_in "task_deadline", with: '002021/02/10'
+        fill_in "task_deadline", with: '002021-12-30'
         select "中", from: 'task_priority'
         select "完了", from: 'task_status'
         click_on "登録"
@@ -37,6 +42,11 @@ RSpec.describe 'タスク管理機能', type: :system do
   end
 
   describe '検索機能' do
+    before do
+      FactoryBot.create(:task, title: "task_test", status: "着手中", user: @user)
+      FactoryBot.create(:second_task, title: "sample", status: "着手中", user: @user)
+    end
+
     context 'タイトルであいまい検索をした場合' do
       it "検索キーワードを含むタスクで絞り込まれる" do
         visit tasks_path

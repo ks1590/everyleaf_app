@@ -1,0 +1,31 @@
+<h3>ユーザーリスト</h3>
+<div class="task-form">
+  <%= link_to new_admin_user_path, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>　新しいユーザーを登録する
+  <% end %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr class="heading">
+      <th><%= t('view.user_id') %></th>
+      <th><%= t('view.user_name') %></th>
+      <th><%= t('view.email') %></th>
+      <th><%= t('view.task_count') %></th>
+      <th><%= t('view.admin') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>        
+        <th><%= user.id %></th>
+        <td><%= link_to user.name, admin_user_path(user.id) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.tasks.count %></td>
+        <td><%= user.admin? ? "有": "無" %></td>
+        <td><%= link_to t('view.edit'), edit_admin_user_path(user), class: "btn btn-primary" %></td>
+        <td><%= link_to t('view.destroy'), admin_user_path(user), method: :delete, data: { confirm: '本当に削除していいですか?' }, class: "btn btn-warning" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @users, class: "pagination"%>
