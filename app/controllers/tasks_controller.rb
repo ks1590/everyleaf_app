@@ -8,12 +8,13 @@ class TasksController < ApplicationController
     @get_params = get_task_params
     @tasks = Task.search(@get_params)
     if params[:sort_expired]
-      @tasks = @tasks.deadline.page(params[:page]).per(PREVIEW)
+      @tasks = @tasks.deadline
     elsif params[:sort_priority]
-      @tasks = @tasks.priority.page(params[:page]).per(PREVIEW)
+      @tasks = @tasks.priority
     else
-      @tasks = @tasks.default.page(params[:page]).per(PREVIEW)
+      @tasks = @tasks.default
     end
+    @tasks = @tasks.page(params[:page]).per(PREVIEW)
   end
 
   def new
@@ -57,7 +58,8 @@ class TasksController < ApplicationController
       :detail,
       :deadline,
       :priority,
-      :status
+      :status,
+      label_ids:[]
     ) 
   end
   
@@ -66,6 +68,6 @@ class TasksController < ApplicationController
   end
 
   def get_task_params
-    params.fetch(:search, {}).permit(:title, :status)
+    params.fetch(:search, {}).permit(:title, :status, :label_id)
   end
 end

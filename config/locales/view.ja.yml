@@ -14,6 +14,7 @@ ja:
     deadline: 終了期限
     priority: 優先順位
     status: ステータス
+    label: ラベル
     task_count: タスク数
     show: 詳細
     edit: 編集
