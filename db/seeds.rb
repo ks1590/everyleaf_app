@@ -36,3 +36,15 @@ end_date = Date.parse("2021/02/28")
     status: status.sample
   )
 end
+
+labels = ["HTML", "JavaScript", "Ruby", "SQL"]
+
+labels.each {|label|
+  Label.create!(
+    name: label
+  )
+}
+
+15.times do |n|
+  TaskLabel.create!(task_id: rand(1..15), label_id: rand(1..4))
+end

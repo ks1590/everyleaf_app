@@ -20,6 +20,7 @@
       <th><%= t('view.deadline') %></th>
       <th><%= t('view.priority') %></th>
       <th><%= t('view.status') %></th>
+      <th><%= t('view.label') %></th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +30,12 @@
         <td><%= task.detail.truncate(20) %></td>
         <td><%= l task.deadline, format: :short %></td>
         <td><%= task.priority %></td>
-        <td><%= task.status %></td>      
+        <td><%= task.status %></td>
+        <td>
+          <% task.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+        </td>
         <td><%= link_to t('view.edit'), edit_task_path(task.id), class: "btn btn-primary" %></td>
         <td><%= link_to t('view.destroy'), task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか?' }, class: "btn btn-warning" %></td> 
       </tr>

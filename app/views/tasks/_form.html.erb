@@ -22,7 +22,9 @@
         <%= f.label t('view.status') %><br>
         <%= f.select(:status, options_for_select(I18n.t('status_option')),{include_blank: '選択して下さい'}, {class: "selectpicker select-option"}) %>        
       </div>
-
+      <div class="form-group col-xs-8 col-xs-offset-2">
+        <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+      </div>
       <div class="form-group col-xs-8 col-xs-offset-2">
         <%= f.submit disable_with: '登録中...', class: "btn btn-success btn-block" %>
       </div>

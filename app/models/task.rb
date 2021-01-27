@@ -7,6 +7,8 @@ class Task < ApplicationRecord
   validate :check_past_date
 
   belongs_to :user
+  has_many :task_labels, dependent: :destroy
+  has_many :labels, through: :task_labels
 
   enum priority: { 低: 0, 中: 1, 高: 2 }
 
@@ -14,23 +16,18 @@ class Task < ApplicationRecord
     errors.add(:deadline, 'に過去日が入力されています。') if deadline < Date.today - 1
   end
 
-  scope :search, -> (get_params) { 
-    return if get_params.blank?
+  scope :search, -> (search_params) do
+    title = search_params[:title]
+    status = search_params[:status]
+    label = search_params[:label_id]
+    return if search_params.blank?
+    title_keyword(title).check_status(status).check_label(label)
+  end
 
-    title = get_params[:title]
-    status = get_params[:status]
-
-    if title_keyword(title).blank?
-      status(status)
-    elsif status(status).blank?
-      title_keyword(title)
-    else
-      title_keyword(title).status(status)
-    end    
-  }
-  scope :title_keyword, -> (title) { title.blank? ? "" : where('title LIKE ?', "%#{title}%") }
-  scope :status, -> (status) { status == "未選択" ? "" : where(status: status) }
+  scope :title_keyword, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
+  scope :check_status, -> status { where(status: status) if status.present? }
   scope :default, -> { order(created_at: :desc) }
   scope :deadline, -> { order(deadline: :desc) }
   scope :priority, -> { order(priority: :desc) }
+  scope :check_label, -> label_id { joins(:labels).where(labels: { id: label_id }) if label_id.present? }
 end
